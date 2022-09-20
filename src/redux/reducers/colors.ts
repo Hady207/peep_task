@@ -43,13 +43,29 @@ const colorsSlice = createSlice({
         }
       }
     },
+    setPrimaryColor(state, action: PayloadAction<string>) {
+      state.primaryColor = action.payload;
+      if (state.historyPrimaryColor.length < 5) {
+        state.historyPrimaryColor.push(action.payload);
+      } else {
+        // remove first element in the array and stay immutable
+        const newArr = state.historyPrimaryColor;
+        newArr.shift();
+        state.historyPrimaryColor = newArr;
+        state.historyPrimaryColor.push(action.payload);
+      }
+    },
     changeThemeMode(state, action: PayloadAction<"light" | "dark">) {
       state.themeMode = action.payload;
     },
   },
 });
 
-export const { toggleFav, changeThemeMode, generateRandomColor } =
-  colorsSlice.actions;
+export const {
+  toggleFav,
+  changeThemeMode,
+  generateRandomColor,
+  setPrimaryColor,
+} = colorsSlice.actions;
 
 export default colorsSlice.reducer;

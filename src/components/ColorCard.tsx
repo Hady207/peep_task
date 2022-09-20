@@ -8,13 +8,19 @@ import { IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const ColorCard = ({ bgcolor, liked, onFavClick }: any) => {
+const ColorCard = ({
+  bgcolor,
+  liked,
+  mood,
+  onFavClick,
+  onPrimarySelect,
+}: any) => {
   return (
     <Box sx={{ minWidth: 275 }}>
       <Card variant="outlined" sx={{ backgroundColor: bgcolor }}>
         <CardContent sx={{ height: 135 }}>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Color of the Day
+            Mood of the Day: {mood}
           </Typography>
           <Typography variant="h5" component="div">
             {bgcolor}
@@ -31,7 +37,7 @@ const ColorCard = ({ bgcolor, liked, onFavClick }: any) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button>Set As Primary Color</Button>
+          <Button onClick={onPrimarySelect}>Set As Primary Color</Button>
         </CardActions>
       </Card>
     </Box>
