@@ -5,14 +5,14 @@ interface ColorsState {
   likedColors: string[];
   historyPrimaryColor: string[];
   primaryColor: string | null;
-  isDark: boolean;
+  themeMode: "light" | "dark";
 }
 
 const initialState: ColorsState = {
   likedColors: [],
   historyPrimaryColor: [],
   primaryColor: null,
-  isDark: false,
+  themeMode: "light",
 };
 
 const colorsSlice = createSlice({
@@ -28,9 +28,12 @@ const colorsSlice = createSlice({
         state.likedColors.push(action.payload);
       }
     },
+    changeThemeMode(state, action: PayloadAction<"light" | "dark">) {
+      state.themeMode = action.payload;
+    },
   },
 });
 
-export const { toggleLike } = colorsSlice.actions;
+export const { toggleLike, changeThemeMode } = colorsSlice.actions;
 
 export default colorsSlice.reducer;
