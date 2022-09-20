@@ -3,7 +3,9 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { randomHex } from "../../utils/randomHex";
 
 interface ColorsState {
-  likedColors: string[];
+  favHash: {
+    [key: number]: boolean;
+  };
   historyPrimaryColor: string[];
   primaryColor: string | null;
   generatedColors: string[];
@@ -11,7 +13,7 @@ interface ColorsState {
 }
 
 const initialState: ColorsState = {
-  likedColors: [],
+  favHash: {},
   historyPrimaryColor: [],
   primaryColor: null,
   generatedColors: [],
@@ -22,19 +24,23 @@ const colorsSlice = createSlice({
   name: "colors",
   initialState,
   reducers: {
-    toggleLike(state, action: PayloadAction<string>) {
-      if (state.likedColors.includes(action.payload)) {
-        state.likedColors = state.likedColors.filter(
-          (color) => color !== action.payload
-        );
+    toggleFav(state, action: PayloadAction<number>) {
+      if (state.favHash[action.payload]) {
+        state.favHash[action.payload] = false;
       } else {
-        state.likedColors.push(action.payload);
+        state.favHash[action.payload] = true;
       }
     },
     generateRandomColor(state) {
-      state.generatedColors = [];
       for (let i = 0; i < 8; i++) {
-        state.generatedColors.push(`#${randomHex()}`);
+        if (i in state.favHash && state.favHash[i]) {
+          continue;
+        } else if (i in state.favHash && !state.favHash[i]) {
+          state.generatedColors[i] = `#${randomHex()}`;
+        } else {
+          state.favHash[i] = false;
+          state.generatedColors[i] = `#${randomHex()}`;
+        }
       }
     },
     changeThemeMode(state, action: PayloadAction<"light" | "dark">) {
@@ -43,7 +49,7 @@ const colorsSlice = createSlice({
   },
 });
 
-export const { toggleLike, changeThemeMode, generateRandomColor } =
+export const { toggleFav, changeThemeMode, generateRandomColor } =
   colorsSlice.actions;
 
 export default colorsSlice.reducer;
