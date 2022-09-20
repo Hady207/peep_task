@@ -1,17 +1,22 @@
-import React from "react";
+import { useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import { changeThemeMode } from "../redux/reducers/colors";
-import { Button, Container, Box } from "@mui/material";
+import { generateRandomColor } from "../redux/reducers/colors";
+import { Container, Box } from "@mui/material";
 import AppBar from "../components/AppBar";
+import ColorGrid from "../components/ColorGrid";
+import PalleteButton from "../components/PalleteButton";
 
 const Home = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const handleThemeModeChange = () => {
-    dispatch(
-      changeThemeMode(theme.palette.mode === "light" ? "dark" : "light")
-    );
+
+  useEffect(() => {
+    dispatch(generateRandomColor());
+  }, [dispatch]);
+
+  const handleGeneratingPalete = () => {
+    dispatch(generateRandomColor());
   };
 
   return (
@@ -22,13 +27,8 @@ const Home = () => {
     >
       <AppBar />
       <Container>
-        <Button
-          variant="contained"
-          color="success"
-          onClick={handleThemeModeChange}
-        >
-          change pallete
-        </Button>
+        <ColorGrid />
+        <PalleteButton onClick={handleGeneratingPalete} />
       </Container>
     </Box>
   );
