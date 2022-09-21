@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { randomHex } from "../../utils/randomHex";
+import { lightOrDark } from "../../utils/colorDetector";
 
 interface ColorsState {
   favHash: {
@@ -45,7 +46,11 @@ const colorsSlice = createSlice({
     },
     setPrimaryColor(state, action: PayloadAction<string>) {
       state.primaryColor = action.payload;
-      if (state.historyPrimaryColor.length < 5) {
+      state.themeMode = lightOrDark(action.payload);
+      if (
+        state.historyPrimaryColor.length < 5 &&
+        !state.historyPrimaryColor.includes(action.payload)
+      ) {
         state.historyPrimaryColor.push(action.payload);
       } else {
         // remove first element in the array and stay immutable
@@ -58,6 +63,11 @@ const colorsSlice = createSlice({
     changeThemeMode(state, action: PayloadAction<"light" | "dark">) {
       state.themeMode = action.payload;
     },
+    removeColorFromPrimaryArr(state, action: PayloadAction<string>) {
+      state.historyPrimaryColor = state.historyPrimaryColor.filter(
+        (hex) => hex !== action.payload
+      );
+    },
   },
 });
 
@@ -66,6 +76,7 @@ export const {
   changeThemeMode,
   generateRandomColor,
   setPrimaryColor,
+  removeColorFromPrimaryArr,
 } = colorsSlice.actions;
 
 export default colorsSlice.reducer;

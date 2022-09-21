@@ -4,8 +4,9 @@ import { useTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { changeThemeMode } from "../redux/reducers/colors";
+import ColorLensIcon from "@mui/icons-material/ColorLens";
 
-const ButtonAppBar = () => {
+const ButtonAppBar = ({ onOpenDrawer }: any) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const handleThemeModeChange = () => {
@@ -17,6 +18,16 @@ const ButtonAppBar = () => {
     <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
       <AppBar position="static">
         <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            onClick={onOpenDrawer}
+          >
+            <ColorLensIcon />
+          </IconButton>
           <Typography
             variant="h6"
             component="div"

@@ -37,7 +37,9 @@ const ColorCard = ({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={onPrimarySelect}>Set As Primary Color</Button>
+          <Button variant="contained" onClick={onPrimarySelect}>
+            Set As Primary Color
+          </Button>
         </CardActions>
       </Card>
     </Box>

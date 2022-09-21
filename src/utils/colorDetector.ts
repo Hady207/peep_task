@@ -1,4 +1,4 @@
-export const lightOrDark = (color: any): string => {
+export const lightOrDark = (color: any): "light" | "dark" => {
   // Variables for red, green, blue values
   let r, g, b, hsp;
 
@@ -21,7 +21,7 @@ export const lightOrDark = (color: any): string => {
     b = color & 255;
   }
 
-  // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+  // HSP  equation from http://alienryderflex.com/hsp.html
   hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
 
   // Using the HSP value, determine whether the color is light or dark

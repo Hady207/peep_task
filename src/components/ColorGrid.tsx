@@ -25,7 +25,7 @@ const ColorGrid = () => {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         {generatedColors?.map((color: string, index: number) => (
-          <Grid key={`${color}${index}`} item xs={3}>
+          <Grid key={`${color}${index}`} item xs={6} sm={6} md={3}>
             <ColorCard
               bgcolor={color}
               liked={favHash[index]}
