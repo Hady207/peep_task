@@ -13,7 +13,7 @@ const PaletteButton = ({ onClick }: PaletteButtonProps) => {
         color="primary"
         onClick={onClick}
       >
-        Change Palette
+        Generate Color Palette
       </Button>
     </Box>
   );
