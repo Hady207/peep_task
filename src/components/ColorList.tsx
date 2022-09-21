@@ -1,48 +1,20 @@
-import Card from "@mui/material/Card";
-import { CardActionArea, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
+import ColorItem from "./ColorItem";
 import {
-  setPrimaryColor,
+  setPrimaryColorFromHistory,
   removeColorFromPrimaryArr,
 } from "../redux/reducers/colors";
-
-const ColorItem = ({ color, onSelect, onDelete }: any) => (
-  <Card
-    onClick={onSelect}
-    sx={{
-      backgroundColor: color,
-      marginBottom: 5,
-      height: 90,
-      textAlign: "center",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-    }}
-  >
-    <CardActionArea sx={{ height: "100%" }}>{color}</CardActionArea>
-    <IconButton
-      size="large"
-      edge="start"
-      color="inherit"
-      aria-label="menu"
-      sx={{ mr: 2 }}
-      onClick={onDelete}
-    >
-      <DeleteIcon />
-    </IconButton>
-  </Card>
-);
+import { RootState } from "../redux";
 
 const ColorList = () => {
   const { historyPrimaryColor, primaryColor } = useSelector(
-    (state: any) => state.colors
+    (state: RootState) => state.colors
   );
   const dispatch = useDispatch();
 
   const handleSelectingPrimary = (color: string) => {
     if (primaryColor !== color) {
-      dispatch(setPrimaryColor(color));
+      dispatch(setPrimaryColorFromHistory(color));
     }
   };
 

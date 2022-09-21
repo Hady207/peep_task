@@ -60,6 +60,10 @@ const colorsSlice = createSlice({
         state.historyPrimaryColor.push(action.payload);
       }
     },
+    setPrimaryColorFromHistory(state, action: PayloadAction<string>) {
+      state.primaryColor = action.payload;
+      state.themeMode = lightOrDark(action.payload);
+    },
     changeThemeMode(state, action: PayloadAction<"light" | "dark">) {
       state.themeMode = action.payload;
     },
@@ -76,6 +80,7 @@ export const {
   changeThemeMode,
   generateRandomColor,
   setPrimaryColor,
+  setPrimaryColorFromHistory,
   removeColorFromPrimaryArr,
 } = colorsSlice.actions;
 

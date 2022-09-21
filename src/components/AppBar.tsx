@@ -6,7 +6,11 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { changeThemeMode } from "../redux/reducers/colors";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 
-const ButtonAppBar = ({ onOpenDrawer }: any) => {
+type ButtonAppBarProps = {
+  onOpenDrawer: () => void;
+};
+
+const ButtonAppBar = ({ onOpenDrawer }: ButtonAppBarProps) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const handleThemeModeChange = () => {
@@ -49,7 +53,6 @@ const ButtonAppBar = ({ onOpenDrawer }: any) => {
               <Brightness4Icon />
             )}
           </IconButton>
-          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </Box>

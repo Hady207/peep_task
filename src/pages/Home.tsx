@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import { generateRandomColor } from "../redux/reducers/colors";
 import { Container, Box } from "@mui/material";
+
+import { generateRandomColor } from "../redux/reducers/colors";
 import AppBar from "../components/AppBar";
 import ColorGrid from "../components/ColorGrid";
 import PalleteButton from "../components/PalleteButton";
@@ -10,7 +10,6 @@ import SideDrawer from "../components/SideDrawer";
 import ColorList from "../components/ColorList";
 
 const Home = () => {
-  const theme = useTheme();
   const dispatch = useDispatch();
   const [openFlag, setOpenFlag] = useState<boolean>(false);
 
@@ -34,6 +33,7 @@ const Home = () => {
     <Box
       sx={{
         bgcolor: "background.default",
+        height: "100vh",
       }}
     >
       <AppBar onOpenDrawer={handleOpenDrawer} />

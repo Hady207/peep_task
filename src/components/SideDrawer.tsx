@@ -1,7 +1,14 @@
+import React from "react";
 import Drawer from "@mui/material/Drawer";
 import Typography from "@mui/material/Typography";
 
-const SideDrawer = ({ children, onClose, flag }: any) => {
+type SideDrawerProps = {
+  children: React.ReactNode;
+  onClose: () => void;
+  flag: boolean;
+};
+
+const SideDrawer = ({ children, onClose, flag }: SideDrawerProps) => {
   return (
     <Drawer
       PaperProps={{ sx: { width: "45vw" } }}

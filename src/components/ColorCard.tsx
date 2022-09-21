@@ -8,13 +8,21 @@ import { IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
+type ColorCardProps = {
+  bgcolor: string;
+  liked: boolean;
+  mood: string;
+  onFavClick: () => void;
+  onPrimarySelect: () => void;
+};
+
 const ColorCard = ({
   bgcolor,
   liked,
   mood,
   onFavClick,
   onPrimarySelect,
-}: any) => {
+}: ColorCardProps) => {
   return (
     <Box sx={{ minWidth: 275 }}>
       <Card variant="outlined" sx={{ backgroundColor: bgcolor }}>

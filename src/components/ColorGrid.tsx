@@ -1,13 +1,14 @@
+import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ColorCard from "./ColorCard";
-import { useDispatch, useSelector } from "react-redux";
 import { toggleFav, setPrimaryColor } from "../redux/reducers/colors";
 import { lightOrDark } from "../utils/colorDetector";
+import { RootState } from "../redux";
 
 const ColorGrid = () => {
   const { generatedColors, favHash, primaryColor } = useSelector(
-    (state: any) => state.colors
+    (state: RootState) => state.colors
   );
   const dispatch = useDispatch();
 

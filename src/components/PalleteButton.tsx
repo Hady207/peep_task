@@ -1,15 +1,19 @@
 import { Button, Box } from "@mui/material";
 
-const PalleteButton = ({ onClick }: any) => {
+type PalleteButtonProps = {
+  onClick: () => void;
+};
+
+const PalleteButton = ({ onClick }: PalleteButtonProps) => {
   return (
     <Box textAlign="center">
       <Button
         sx={{ mt: 10 }}
         variant="contained"
-        color="success"
+        color="primary"
         onClick={onClick}
       >
-        change pallete
+        Change pallete
       </Button>
     </Box>
   );

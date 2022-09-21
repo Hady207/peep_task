@@ -1,5 +1,3 @@
-import React from "react";
-import "./App.css";
 import { Provider } from "react-redux";
 import Root from "./pages/Root";
 import { store } from "./redux";
