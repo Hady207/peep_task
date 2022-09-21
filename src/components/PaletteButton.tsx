@@ -1,10 +1,10 @@
 import { Button, Box } from "@mui/material";
 
-type PalleteButtonProps = {
+type PaletteButtonProps = {
   onClick: () => void;
 };
 
-const PalleteButton = ({ onClick }: PalleteButtonProps) => {
+const PaletteButton = ({ onClick }: PaletteButtonProps) => {
   return (
     <Box textAlign="center">
       <Button
@@ -13,10 +13,10 @@ const PalleteButton = ({ onClick }: PalleteButtonProps) => {
         color="primary"
         onClick={onClick}
       >
-        Change pallete
+        Change Palette
       </Button>
     </Box>
   );
 };
 
-export default PalleteButton;
+export default PaletteButton;

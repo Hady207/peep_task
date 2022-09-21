@@ -5,7 +5,7 @@ import { Container, Box } from "@mui/material";
 import { generateRandomColor } from "../redux/reducers/colors";
 import AppBar from "../components/AppBar";
 import ColorGrid from "../components/ColorGrid";
-import PalleteButton from "../components/PalleteButton";
+import PaletteButton from "../components/PaletteButton";
 import SideDrawer from "../components/SideDrawer";
 import ColorList from "../components/ColorList";
 
@@ -42,7 +42,7 @@ const Home = () => {
       </SideDrawer>
       <Container>
         <ColorGrid />
-        <PalleteButton onClick={handleGeneratingPalete} />
+        <PaletteButton onClick={handleGeneratingPalete} />
       </Container>
     </Box>
   );
