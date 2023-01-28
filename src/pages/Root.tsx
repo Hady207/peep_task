@@ -4,6 +4,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux";
 
+import { Outlet } from "react-router-dom";
+
 const Root = () => {
   const { themeMode, primaryColor } = useSelector(
     (state: RootState) => state.colors
@@ -24,7 +26,7 @@ const Root = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Home />
+        <Outlet />
       </div>
     </ThemeProvider>
   );
